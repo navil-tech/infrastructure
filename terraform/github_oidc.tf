@@ -1,6 +1,6 @@
 locals {
   github_oidc_provider = "token.actions.githubusercontent.com"
-  github_repo          = "navil-tech/marketing-website"
+  github_repo          = "navil-tech@341373122/marketing-website@1415333848"
 }
 
 resource "aws_iam_openid_connect_provider" "github" {
