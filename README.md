@@ -24,7 +24,7 @@ Outputs: `elastic_ip` (the host), `ecr_repository_url`, `ci_role_arn`. DNS stays
 
 CI in the site repository builds one image per push and pushes it to ECR `navil/marketing-website` through the OIDC role. Tags are immutable.
 
-- Push to `dev`: image `dev-<sha7>`. ECR keeps the 10 most recent `dev-*` images.
+- Push to `dev`: image `dev-<sha7>`. ECR keeps the 5 most recent `dev-*` images.
 - Merge to `main`: semantic-release reads the conventional commits since the last release, bumps the version (`feat` and `refactor` are minor, everything else is patch), writes `CHANGELOG.md`, tags `vX.Y.Z` and pushes the image `X.Y.Z`. Release images are never expired.
 
 ## Deploying a tag on the host
