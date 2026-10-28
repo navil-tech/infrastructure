@@ -14,12 +14,12 @@ resource "aws_ecr_lifecycle_policy" "marketing_website" {
     rules = [
       {
         rulePriority = 1
-        description  = "Keep the 10 most recent dev-* images"
+        description  = "Keep the 5 most recent dev-* images"
         selection = {
           tagStatus     = "tagged"
           tagPrefixList = ["dev-"]
           countType     = "imageCountMoreThan"
-          countNumber   = 10
+          countNumber   = 5
         }
         action = {
           type = "expire"
