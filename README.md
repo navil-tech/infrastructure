@@ -41,6 +41,21 @@ docker image prune -f            # drop images of previous tags
 
 The container applies pending migrations before starting the site. `grep IMAGE_TAG .env` shows what is deployed. nginx on the host terminates TLS for `navil.co.il` and proxies to `127.0.0.1:3000`; certbot renews the certificate on its own.
 
+### Database access
+
+Postgres listens only on `127.0.0.1:5432` of the host; the security group does not open the port. From a laptop, open an ssh tunnel and point a client at `localhost:5433` with the user and password from `deploy/.env` on the host:
+
+```bash
+ssh -N -L 5433:127.0.0.1:5432 ubuntu@<elastic_ip>
+```
+
+Or on the host itself:
+
+```bash
+cd ~/deploy
+docker compose exec postgres psql -U "$POSTGRES_USER" "$POSTGRES_DB"
+```
+
 ## Backups
 
 `deploy/backup.sh` runs from cron at 03:00 UTC on the host: `pg_dump` of the site database, gzipped, uploaded to the S3 bucket `navil-db-backups-470639361212` under the fixed key `navil.sql.gz`. The bucket is versioned and keeps the current copy plus the 9 previous ones. The host can only write to the bucket; reading needs the `yan428` profile.
