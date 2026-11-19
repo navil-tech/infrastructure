@@ -12,7 +12,7 @@ Account `470639361212`, region `us-east-1`, AWS CLI profile `yan428`. State live
 
 ```bash
 cd terraform
-cp terraform.example.tfvars terraform.tfvars   # set the path to your public ssh key
+cp terraform.example.tfvars terraform.tfvars   # set the AWS CLI profile and the path to your public ssh key
 terraform init
 terraform plan
 terraform apply
