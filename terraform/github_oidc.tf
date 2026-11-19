@@ -51,6 +51,7 @@ data "aws_iam_policy_document" "ci_ecr_push" {
       "ecr:UploadLayerPart",
       "ecr:CompleteLayerUpload",
       "ecr:PutImage",
+      "ecr:BatchGetImage",
     ]
     resources = [aws_ecr_repository.marketing_website.arn]
   }
