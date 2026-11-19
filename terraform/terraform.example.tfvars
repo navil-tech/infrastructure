@@ -1,2 +1,2 @@
-aws_profile         = "yan428"
-ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+aws_profile         = ""
+ssh_public_key_path = ""
