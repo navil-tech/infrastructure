@@ -43,7 +43,7 @@ The container applies pending migrations before starting the site. `grep IMAGE_T
 
 ### Telegram notifications
 
-The site builds a Telegram message for every saved lead. To have it delivered, create a bot with @BotFather, add it to the chat that should receive the messages and set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `~/deploy/.env`, then `docker compose up -d`. With empty values the messages are stored in the database and not sent.
+The site builds a Telegram message for every saved lead. To have it delivered, create a bot with @BotFather, add it to the chat that should receive the messages and set `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` in `~/deploy/.env`, then `docker compose up -d`. For a group with topics also set `TELEGRAM_THREAD_ID` to the topic number, the middle part of a message link `t.me/c/<group>/<topic>/<message>`; without it the message goes to the general topic. With empty values the messages are stored in the database and not sent.
 
 ### Access log
 
